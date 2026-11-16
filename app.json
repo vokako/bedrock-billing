@@ -1,0 +1,31 @@
+{
+  "name": "bedrock-billing",
+  "version": "0.1.0",
+  "displayName": "Bedrock Billing",
+  "description": "Read-only Bedrock bill for this AWS account: cost per model and Region, input / output / cache read / cache write split, tokens and USD, from Cost Explorer with a CloudWatch token cross-check.",
+  "author": "vokako",
+  "tags": ["aws", "bedrock", "cost", "usage"],
+  "backend": {
+    "entryPoint": "backend/server.py",
+    "port": "auto",
+    "healthCheck": "/health"
+  },
+  "ui": {
+    "entry": "index.mjs",
+    "pages": [
+      {
+        "route": "/apps/bedrock-billing",
+        "label": "Bedrock Billing",
+        "icon": "Receipt",
+        "iconUrl": "icon.svg"
+      }
+    ]
+  },
+  "permissions": {
+    "api": ["/apps/bedrock-billing/api"],
+    "network": true
+  },
+  "dependencies": {
+    "commands": ["aws"]
+  }
+}
